@@ -4,6 +4,7 @@ Work related to Glitch Works R6501Q SBC Kit
 ## ROM Routies
 Several of the routines in the eWoz monitor are useful when called from your own program.
 
+* __SFTRST ($FD34)__ - This performs a soft reset for the monitor. It can be used to return to the monitor if the stack might have been corrupted. (If you know the stack is back to its original condition, a program can exit and return from a RUN command with an RTS.)
 * __PRBYTE ($FE24)__ - Prints the value in A in a 2 digit hexadecimal format. (A is clobbered.)
 * __PRHEX ($FE38)__ - Prints the lower nibble (4 bits) of A as a 1 digit hexadecimal number. (A is clobbered.)
 * __SHWMSG ($FE45)__ - Prints a NULL terminated string pointed to by Page Zero locations MSGL ($4B) and MSGH ($4C). (See the hw.a65 file for an example of how to use this.)
