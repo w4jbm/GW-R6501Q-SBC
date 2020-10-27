@@ -4,11 +4,11 @@ Work related to Glitch Works R6501Q SBC Kit
 ## ROM Routies
 Several of the routines in the eWoz monitor are useful when called from your own program.
 
-__PRBYTE ($FE24)__ - Prints the value in A in a 2 digit hexadecimal format. (A is clobbered.)
-__PRHEX ($FE38)__ - Prints the lower nibble (4 bits) of A as a 1 digit hexadecimal number. (A is clobbered.)
-__SHWMSG ($FE45)__ - Prints a NULL terminated string pointed to by Page Zero locations MSGL ($4B) and MSGH ($4C).
-__CIN ($FF2D)__ - Gets a character from the console and returns it in A.
-__COUT ($FF36)__ - Prints the character in A to the console.
+* __PRBYTE ($FE24)__ - Prints the value in A in a 2 digit hexadecimal format. (A is clobbered.)
+* __PRHEX ($FE38)__ - Prints the lower nibble (4 bits) of A as a 1 digit hexadecimal number. (A is clobbered.)
+* __SHWMSG ($FE45)__ - Prints a NULL terminated string pointed to by Page Zero locations MSGL ($4B) and MSGH ($4C).
+* __CIN ($FF2D)__ - Gets a character from the console and returns it in A.
+* __COUT ($FF36)__ - Prints the character in A to the console.
 
 Note: These locations may change if the monitor program is modified at some point down the road.
 
