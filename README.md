@@ -1,5 +1,5 @@
 # GW_R6501Q_SBC
-Work related to Glitch Works R6501Q SBC Kit
+Work related to Glitch Works R6501Q SBC Kit. The R6501Q is from the 6502 family, but has I/O and memory built in to Page Zero. The stack is also located in Page Zero, so things get cozy in terms of finding space to port some software over.
 
 ## ROM Routies
 Several of the routines in the eWoz monitor are useful when called from your own program.
