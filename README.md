@@ -29,8 +29,11 @@ Another quirk I ran into as I tinkered with this is that after the command promp
 
 I patched a version of Tiny BASIC that is here in Intel Hex format. You can load it and then use `1000R` to start it (which is easier for me than messing with the switches anyway). If you reset and get out of Tiny BASIC, you can do a warm start that will retain your program unless you've done something to modify memory by entering `1003R`.
 
+After some thinking, I also found an easy way to just patch the proper byte during the upgrade process. There are no ill effects if you upgrade an already upgraded system...
+
+Follow the instruction on loading the `updater_conf2.hex` file using eWoz, but don't run it yet. In the current code (as of 13 Dec 2020) I found the location in memory that mapped to what ultimately becomes OutPad at $168B. In eWoz, typing `168B` should show the memory contents of that location as $82. You can patch by typing `168B:00`. Once that's done, verify the change to the memory location was made and then continue with the instructions for the upgrade by typing `200R` to run the ROM upgrade code. After the upgrade, things work fine with minicom under Linux.
+
 
 ## Revision History
 10-29-2020: Original commit.
 12-12-2020: Upgrade to ROMFS.
-
