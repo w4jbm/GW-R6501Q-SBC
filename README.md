@@ -17,3 +17,13 @@ Note: These locations may change if the monitor program is modified at some poin
 I did a quick rebuild of the ROM code to find some of the routines and will add more documentation later. This uses the ROM routine that sends a NULL terminated string to the console. It can be assembled with the online ASM80 dot COM assemlber for convience.
 
 ![Hello World](https://github.com/w4jbm/GW_R6501Q_SBC/raw/main/hw_25Oct2020.png)
+
+
+## Tiny BASIC
+
+I noticed the the ROMFS upgrade was available in early December 2020 and upgraded the system. I'm having a bit of trouble because by default there is a value OutPad that is set to $82. The sign bit indicates that with each CR/LF, OUTPAD should use $7F (rubout) as the pad character and send two of them (the value in the lower nibble). Running minicom under Linux, this causes a pair of stray spaces to appear. I'm going to see if I can locate and patch things.
+
+## Revision History
+10-29-2020: Original commit.
+12-12-2020: Upgrade to ROMFS.
+
