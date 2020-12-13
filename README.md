@@ -27,7 +27,7 @@ With OutPad set to $84, the sign bit indicates that with each CR/LF, OUTPAD shou
 
 Another quirk I ran into as I tinkered with this is that after the command prompt (a ":"), Tiny BASIC also sends a Control-Q (hex $11, also the x-on character) to clear things up in a previous Control-S (x-off) had been sent. This didn't seem to have any effect.
 
-I patched a version of Tiny BASIC that is here in Intel Hex format. You can load it and then use `1000R` to start it (which is easier for me than messing with the switches anyway). If you reset and get out of Tiny BASIC, you can do a warm start that will retain your program unless you've done something to modify memory by entering `1003R`.
+I patched a version of Tiny BASIC that is here in Intel Hex format. Under Linux I used `hexedit` to search for 8280 and then replaced the $82 with a $00. I converted this to a .hex file using `srec_cat tb_patched.bin -binary -offset 0x1000 -output tb_patched.hex -Intel`. (The patched version included here saves you the trouble.) You can load it and then use `1000R` to start it (which is easier for me than messing with the switches anyway). If you reset and get out of Tiny BASIC and into eWoz, you can do a warm start that will retain your program unless you've done something to modify memory by entering `1003R`.
 
 After some thinking, I also found an easy way to just patch the proper byte during the upgrade process. There are no ill effects if you upgrade an already upgraded system...
 
