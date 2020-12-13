@@ -35,5 +35,5 @@ Follow the instruction on loading the `updater_conf2.hex` file using eWoz, but d
 
 
 ## Revision History
-10-29-2020: Original commit.
-12-12-2020: Upgrade to ROMFS.
+* 10-29-2020: Original commit.
+* 12-12-2020: Upgrade to ROMFS. Patch for Tiny BASIC.
