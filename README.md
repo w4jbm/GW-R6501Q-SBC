@@ -21,7 +21,14 @@ I did a quick rebuild of the ROM code to find some of the routines and will add 
 
 ## Tiny BASIC
 
-I noticed the the ROMFS upgrade was available in early December 2020 and upgraded the system. I'm having a bit of trouble because by default there is a value OutPad that is set to $82. The sign bit indicates that with each CR/LF, OUTPAD should use $7F (rubout) as the pad character and send two of them (the value in the lower nibble). Running minicom under Linux, this causes a pair of stray spaces to appear. I'm going to see if I can locate and patch things.
+I noticed the the ROMFS upgrade was available in early December 2020 and upgraded the system. I did have a bit of trouble because by default, Tiny BASIC has a value labeled OutPad that is set to $82. This is used to determine if and how a CR/LF is to be "padded". (A remanent of the teletype days...)
+
+With OutPad set to $84, the sign bit indicates that with each CR/LF, OUTPAD should use $7F (rubout) as the pad character and send two of them (the value in the lower nibble). Running minicom under Linux, this causes a pair of "stray blank spaces" to appear. I was able to the file to set OutPad to $00 which says padding should be a NULL character (because the sign bit is clear) and there should be zero of them sent.
+
+Another quirk I ran into as I tinkered with this is that after the command prompt (a ":"), Tiny BASIC also sends a Control-Q (hex $11, also the x-on character) to clear things up in a previous Control-S (x-off) had been sent. This didn't seem to have any effect.
+
+I patched a version of Tiny BASIC that is here in Intel Hex format. You can load it and then use `1000R` to start it (which is easier for me than messing with the switches anyway). If you reset and get out of Tiny BASIC, you can do a warm start that will retain your program unless you've done something to modify memory by entering `1003R`.
+
 
 ## Revision History
 10-29-2020: Original commit.
