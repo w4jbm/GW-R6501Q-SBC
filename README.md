@@ -34,6 +34,27 @@ After some thinking, I also found an easy way to just patch the proper byte duri
 Follow the instruction on loading the `updater_conf2.hex` file using eWoz, but don't run it yet. In the current code (as of 13 Dec 2020) I found the location in memory that mapped to what ultimately becomes OutPad at $168B. In eWoz, typing `168B` should show the memory contents of that location as $82. You can patch by typing `168B:00`. Once that's done, verify the change to the memory location was made and then continue with the instructions for the upgrade by typing `200R` to run the ROM upgrade code. After the upgrade, things work fine with minicom under Linux.
 
 
+## Forth
+
+The first time I saw Forth was at a local Ohio Scientific users group meeting (in Tulsa) back in 1980 or 1981. My senior design project in engineering school was a Rockwell R65F11-based controller for use by the chemical engineering department. I could muddle around in Forth, but never really got the hang of it.
+
+As I tinkered with the firmware upgrade and read through some of the documentation, I realized that basically the R6511Q was similar to the R65F11 except it didn't have Forth onboard. The recent Glitchworks update lets you load the development ROM into memory and then map the RSC-Forth V1.7 ROM into high-memory. This gives you a system similar to the one I buit years ago (except it doesn't have the A/D and D/A converters of my senior project).
+
+That was pretty cool to me--kind of like things had come full circle.
+
+I don't like messing with the DIP switches, so I've pulled the short bootstrap that gets Forth running into a hex file that you can load using eWoz. Use the `L` command in eWoz to load it and then `200R` to run it. Once that's up and running (which is pretty much instantaneous), you can do something simple to get started like:
+
+```
+: STAR 42 EMIT ;
+: STARS 0 DO STAR LOOP ;
+: TRIANGLE CR 1 + 1 DO I STARS CR LOOP ;
+10 TRIANGLE 
+```
+
+I'm still working on getting the hang of using Forth, but it is clicking a bit better for me this time.
+
+
 ## Revision History
 * 10-29-2020: Original commit.
 * 12-12-2020: Upgrade to ROMFS. Patch for Tiny BASIC.
+* 1-13-2021: Added info on Forth
